@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布文章</title>
+    <link rel="stylesheet" href="../scripts/ladda/ladda-themeless.min.css">
+    <style>
+        form{
+            width: 80%;
+            margin: 20px auto 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        h2{
+            margin: 0 0 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        input[type="text"]{
+            width: 70%;
+            padding: 5px;
+        }
+        label.error{
+            color: #a94442;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="postForm">
+        <h2>发布文章</h2>
+        <label for="title">标题：</label><br>
+        <input type="text" id="title" name="title">
+        <br>
+        <label for="content">内容：</label>
+        <script id="content" name="content" type="text/plain" style="height:300px;">
+            这里写你的初始化内容
+        </script>
+        <br>
+        <button type="submit" id="btnSave" class="ladda-button" data-color="mint" data-style="expand-right" data-size="s">发布</button>
+    </form>
+    <script src="../scripts/jquery.min.js"></script>
+    <script src="../scripts/jquery.cookie.min.js"></script>
+    <script src="../scripts/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../scripts/jquery-validation/localization/messages_zh.min.js"></script>
+    <script src="../scripts/purl.min.js"></script>
+    <script src="../scripts/ladda/spin.min.js"></script>
+    <script src="../scripts/ladda/ladda.min.js"></script>
+    <script src="../scripts/ueditor/ueditor.config.js"></script>
+    <script src="../scripts/ueditor/ueditor.all.js"></script>
+    <script src="../scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script>
+        $.ajaxSetup({ crossDomain: true, xhrFields: { withCredentials: true } })
+        $(function () {
+            if (!$.cookie('user')) {
+                var returnUrl = location.origin + location.pathname;
+                location.href = `login.html?returnUrl=${returnUrl}`;
+            }
+            var ue = UE.getEditor('content');
+
+            Ladda.bind('#btnSave', {
+                timeout: 2000
+            });
+
+            $("#postForm").validate({
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    content: {
+                        required: true
+                    }
+                },
+                messages: {
+                    title: '标题不能为空',
+                    content: '内容不能为空'
+                }
+            });
+
+            $('#btnSave').on('click', function(ev){
+                ev.preventDefault();
+                if (!$("#postForm").valid()) {
+                    return;
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户登录 - 博客园</title>
+    <link rel="stylesheet" href="../scripts/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../scripts/ladda/ladda-themeless.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <div id="Main">
+        <form id="loginForm">
+            <div id="Heading">登录博客园 - 代码改变世界</div>
+            <div class="block">
+                <label class="label-line" for="loginName">
+                    登录用户名(<a href="findpassword.html" class="tb_right">找回</a>)
+                </label>
+                <input type="text" id="loginName" name="loginName" autofocus class="input-text">
+            </div>
+            <div class="block">
+                <label class="label-line" for="password">
+                    密码(<a href="resetpassword.html" class="tb_right">重置</a>)
+                </label>
+                <input type="password" id="password" name="password" class="input-text">
+            </div>
+            <div class="block">
+                <input type="checkbox" id="remember" name="remember"><label for="remember">下次自动登录</label>
+            </div>
+            <div class="block">
+                <button type="submit" id="signin" class="button ladda-button" data-color="mint" data-style="expand-right" data-size="s">
+                    <span class="ladda-label">登 录</span>
+                </button>
+                <span id="tip_btn" class="tip"></span>
+            </div>
+            <div class="block nav">
+                »
+                <a href="register.html" title="注册成为博客园用户">立即注册</a><br>
+                »
+                <a href="#">反馈问题</a>
+            </div>
+        </form>
+        <div style="clear: both"></div>
+    </div>
+
+    <script src="../scripts/jquery.min.js"></script>
+    <script src="../scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="../scripts/ladda/spin.min.js"></script>
+    <script src="../scripts/ladda/ladda.min.js"></script>
+    <script src="../scripts/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../scripts/jquery-validation/localization/messages_zh.min.js"></script>
+    <script src="../scripts/purl.min.js"></script>
+    <script>
+        $.ajaxSetup({ crossDomain: true, xhrFields: { withCredentials: true } })
+        
+        $(function(){
+            Ladda.bind('#signin', {
+                timeout: 2000
+            });
+
+            $("#loginForm").validate({
+                rules: {
+                    loginName: {
+                        required: true
+                    },
+                    password: {
+                        required: true
+                    }
+                },
+                messages: {
+                    loginName: '请输入用户名',
+                    password: '请输入密码'
+                }
+            })
+
+            $('#signin').on('click', function(ev){
+                ev.preventDefault();
+                if (!$("#loginForm").valid()) {
+                    return;
+                }
+                var data = $("#loginForm").serializeArray();
+                $.post('http://localhost:3000/users/login', data).done(function(res){
+                    if(res.code === 200){
+                        var returnUrl = purl().data.param.query.returnUrl;
+                        location.href = returnUrl ? returnUrl : '/index.html';
+                    } else {
+                        $('#tip_btn').text(res.message);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

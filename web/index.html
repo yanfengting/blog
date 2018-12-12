@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>博客园-开发者的网上家园</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="hd_info">
+            <div id="cnts">
+                <div id="site_nav_top">代码改变世界</div>
+                <div id="login_area">
+                    <span id="span_userinfo">[
+                        <a href="#" onclick="login();return false">登录</a>·
+                        <a href="#" onclick="register();return false">注册</a>]
+                    </span>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="header">
+            <p class="h_r_3"></p>
+            <p class="h_r_2"></p>
+            <p class="h_r_1"></p>
+            <div id="header_block">
+                <div id="logo">
+                    <h1>
+                        <a href="https://www.cnblogs.com/" title="开发者的网上家园">
+                            <img src="images/logo_small.gif" alt="博客园Logo" width="142" height="55">
+                        </a>
+                    </h1>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <p class="h_r_1"></p>
+            <p class="h_r_2"></p>
+            <p class="h_r_3"></p>
+        </div>
+
+        <div id="nav_menu">
+            <a href="https://home.cnblogs.com/">园子</a>
+            <a href="https://news.cnblogs.com">新闻</a>
+            <a href="https://q.cnblogs.com/">博问</a>
+            <a href="https://ing.cnblogs.com/">闪存</a>
+            <a href="https://group.cnblogs.com/">小组</a>
+            <a href="https://wz.cnblogs.com/">收藏</a>
+            <a href="https://job.cnblogs.com/">招聘</a>
+            <a href="https://edu.cnblogs.com/">班级</a>
+            <a href="http://zzk.cnblogs.com/">找找看</a>
+        </div>
+    </div>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/site.js"></script>
+    <script src="scripts/jquery.cookie.min.js"></script>
+    <script>
+        $.ajaxSetup({ crossDomain: true, xhrFields: { withCredentials: true } })
+
+        function logout(){
+            $.post('http://localhost:3000/users/logout').done(function(res){
+                location.reload();
+            })
+        }
+
+        $(function () {
+            if ($.cookie('user')) {
+                var user = JSON.parse($.cookie('user'));
+                var html =
+                    `<span id="span_userinfo">
+                        <a href="user/home.html">${user.nickname}</a>·
+                        <a id="user_nav_blog_link" href="#">我的博客</a>
+                        <span id="user_nav_blog_split">·</span>
+                        <a href="#">短消息<span id="msg_count"></span></a>·
+                        <a href="#">设置</a>·
+                        <a href="#" onclick="logout();return false">退出</a>
+                    </span>`;
+                $('#login_area').html(html);
+            }
+        })
+    </script>
+</body>
+
+</html>

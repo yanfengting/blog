@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人博客主页</title>
+</head>
+
+<body>
+    <a href="post.html">发布文章</a>
+    <script src="../scripts/jquery.min.js"></script>
+    <script src="../scripts/jquery.cookie.min.js"></script>
+    <script src="../scripts/purl.min.js"></script>
+    <script>
+        $.ajaxSetup({ crossDomain: true, xhrFields: { withCredentials: true } })
+        $(function () {
+            if (!$.cookie('user')) {
+                var returnUrl = location.origin + location.pathname;
+                location.href = `login.html?returnUrl=${returnUrl}`;
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+input[name=IsPhone] {
+    display: none
+}
+
+.form-padding {
+    padding-right: 65px
+}
+
+.form-space-top {
+    height: 25px
+}
+
+.title-top {
+    padding: 0;
+    font-size: 21px
+}
+
+.register-sign {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px
+}
+
+.look-agreeon {
+    text-decoration: underline
+}
+
+.space-line-height {
+    height: 20px
+}
+
+.side-img-box {
+    height: 300px;
+    position: relative;
+    padding-left: 0;
+    margin-top: 22px
+}
+
+.side-line {
+    position: absolute;
+    height: 100%;
+    left: -20px;
+    padding: 15px 0 15px 0
+}
+
+.side-line>div {
+    width: 1px;
+    height: 100%;
+    background-color: #eee
+}
+
+.side-img-box img {
+    position: relative;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 8px
+}
+
+.mobile-control-wrap {
+    display: flex
+}
+
+.country-code {
+    width: 52px;
+    text-align: right
+}
+
+.mobile-num {
+    margin-left: 10px
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .control-label {
+        padding-left: 5px;
+        padding-right: 5px
+    }
+
+    .side-line {
+        padding: 28px 0 28px 0
+    }
+}
+
+@media screen and (max-width:767px) {
+    .form-padding {
+        padding-right: 15px
+    }
+}
+
+.body-box{
+    margin-top: 70px;
+}
+
+.body-content {
+    max-width: 870px
+}
+
+.nav-box {
+    background-color: #283e5c;
+    color: #fff;
+    line-height: 50px
+}
+
+.cnblogs-btn-blue,
+.cnblogs-btn-blue-4words {
+    border-radius: 3px;
+    color: #fff;
+    background: #4688f1;
+    box-shadow: 0 1px 1px #eee;
+    border: 1px solid #3a6faf;
+    float: none
+}
+
+.cnblogs-btn-blue {
+    padding: 4px 9px;
+    letter-spacing: 1em;
+    padding-left: 2em
+}
+
+.cnblogs-btn-blue-4words {
+    padding: 4px 2.5em
+}
+
+.cnblogs-btn-blue-4words:hover,
+.cnblogs-btn-blue:hover,
+.cnblogs-btn-blue-4words:focus,
+.cnblogs-btn-blue:focus {
+    background: #327df5;
+    color: #fff
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.icon-logo {
+    font-size: 33px;
+    color: #bec5ce;
+    vertical-align: middle;
+    margin-top: -3.5px;
+    margin-right: 2px
+}
+
+.icon-txt-logo {
+    font-size: 80px;
+    height: 35px
+}
+
+a.no-style {
+    color: inherit
+}
+
+a.no-style:hover,
+a.no-style:focus,
+a.no-style:active {
+    text-decoration: none
+}
+
+.nav-box .navbar-nav>li>a {
+    color: #fff
+}
+
+.nav-main-icon svg {
+    position: relative;
+    top: .5px;
+    font-size: 16px
+}
+
+.nav-box .navbar-nav>li>a,
+.nav-box .navbar-nav>li>a:hover,
+.nav-box .navbar-nav>li>a:focus {
+    transition: all .2s ease 0s;
+    margin: 12px 7px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #fff
+}
+
+.nav-box .navbar-nav>li>a:hover,
+.nav-box .navbar-nav>li>a:focus {
+    color: #bec5ce
+}
+
+.navbar-right button {
+    background-color: transparent;
+    border: 0
+}
+
+.nav-main-icon>li>a.active,
+.nav-main-icon>li>a.active:hover,
+.nav-main-icon>li>a.active:focus {
+    color: #fff;
+    background-color: #2278cf
+}
+
+.nav-box .navbar-toggle .icon-bar {
+    background-color: #bec5ce
+}
+
+.nav-box .navbar-toggle:hover,
+.nav-box .navbar-toggle:focus {
+    background-color: #fff
+}
+
+.nav-box .navbar-toggle {
+    margin-right: 0
+}
+
+@media screen and (max-width:767px) {
+    .nav-box .navbar-header {
+        padding-left: 15px;
+        padding-right: 15px
+    }
+}
+
+label.error{
+    color: #a94442;
+    font-weight: normal;
+    position: absolute;
+    bottom: -24px;
+    font-size: 12px;
+    right: 20px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
